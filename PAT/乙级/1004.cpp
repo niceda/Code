@@ -2,26 +2,20 @@
 using namespace std;
 
 int main() {
-  int n, maxgrade, mingrade;
+  int n, maxgrade = -1, mingrade = 101, score;
   cin >> n;
-  string maxname, maxnum, minname, minnum;
-  cin >> maxname >> maxnum >> maxgrade;
-  minname = maxname;
-  minnum = maxnum;
-  mingrade = maxgrade;
-  for (int i = 0; i < n - 1; i++) {
-    int tmpgrade;
-    string tmpname, tmpnum;
-    cin >> tmpname >> tmpnum >> tmpgrade;
-    if (tmpgrade > maxgrade) {
-      maxname = tmpname;
-      maxnum = tmpnum;
-      maxgrade = tmpgrade;
+  string maxname, maxnum, minname, minnum, name, num;
+  for (int i = 0; i < n; i++) {
+    cin >> name >> num >> score;
+    if (score > maxgrade) {
+      maxname = name;
+      maxnum = num;
+      maxgrade = score;
     }
-    if (tmpgrade < mingrade) {
-      minname = tmpname;
-      minnum = tmpnum;
-      mingrade = tmpgrade;
+    if (score < mingrade) {
+      minname = name;
+      minnum = num;
+      mingrade = score;
     }
   }
   cout << maxname << " " << maxnum << endl << minname << " " << minnum;

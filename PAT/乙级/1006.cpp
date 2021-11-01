@@ -2,29 +2,21 @@
 using namespace std;
 
 int main() {
-  int n, ge, shi, bai;
+  int n, i = 0;
   cin >> n;
-  ge = n % 10;
-  string B;
-  string S;
-  string G = "";
-  for (int i = 1; i < ge + 1; i++) {
-    G += to_string(i);
+  int b[3] = {0};
+  while (n != 0) {
+    b[i++] = n % 10;
+    n = n / 10;
   }
-  int n1 = n / 10;
-  if (n1 != 0) {
-    shi = n1 % 10;
-    S.append(shi, 'S');
+  for (int i = 0; i < b[2]; i++) {
+    cout << "B";
   }
-  int n2 = n1 / 10;
-  if (n2 != 0) {
-    bai = n2 % 10;
-    B.append(bai, 'B');
+  for (int i = 0; i < b[1]; i++) {
+    cout << "s";
   }
-  if(n2 != 0)
-    cout << B + S + G;
-  else if (n1 != 0)
-    cout << S + G;
-  else
-    cout << G;
+  for (int i = 0; i < b[0]; i++) {
+    cout << i + 1;
+  }
+  return 0;
 }

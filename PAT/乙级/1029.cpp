@@ -10,22 +10,8 @@ int main() {
       i++;
       j++;
     } else {
-
-      // if (c.empty()) {
-      //   c.push_back(toupper(a[i]));
-      // } else {
-      //   for (int k = 0; k < c.length(); k++) {
-      //     if (toupper(c[k]) != toupper(a[i]) && k != c.length() - 1)
-      //       continue;
-      //     else if (toupper(c[k]) != toupper(a[i]) && k == c.length() - 1)
-      //       c.push_back(toupper(a[i]));
-      //     else
-      //       break;
-      //   }
-      // }
-
       if (c.find(toupper(a[i])) == string::npos)
-        c.push_back(toupper(a[i]));
+        c += toupper(a[i]);
       i++;
     }
   }

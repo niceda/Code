@@ -1,9 +1,8 @@
-#include <cmath>
 #include <iostream>
 using namespace std;
 
 bool isprime(int n) {
-  for (int i = 2; i <= sqrt(n); i++)
+  for (int i = 2; i * i <= n; i++)
     if (n % i == 0)
       return false;
   return true;
@@ -18,9 +17,8 @@ int main() {
         if (i - m + 1 != 0 && (i + 1 - m) % 10 != 0)
           cout << " ";
         if (i - m + 1 != 0 && (i + 1 - m) % 10 == 0)
-          cout << endl << j;
-        else
-          cout << j;
+          cout << endl;
+        cout << j;
       }
       i++;
     }
