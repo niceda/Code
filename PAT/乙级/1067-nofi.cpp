@@ -8,7 +8,7 @@ int main() {
    while (t != "#" && N != 0) {
     if (t == password) {
       cout << "Welcome in";
-      return 0;
+      break;
     } else {
       cout << "Wrong password: " << t << endl;
     }

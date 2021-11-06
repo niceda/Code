@@ -1,5 +1,5 @@
-#include <iostream>
 #include <algorithm>
+#include <iostream>
 #include <vector>
 using namespace std;
 
@@ -14,12 +14,9 @@ int main() {
   for (int i = 0, j = 0; i <= N && j < N; i++) {
     for (; j < N; j++) {
       if (v[j] >= i + 1) {
-        if (N - j >= i) {
+        if (N - j >= i)
           max = i;
-          break;
-        }
-        else
-          break;
+        break;
       }
     }
     if (N - j < i)

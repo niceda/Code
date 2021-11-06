@@ -19,8 +19,6 @@ int main() {
       if (temp == right[j])
         total[i] += score[j];
     }
-  }
-  for (int i = 0; i < N; i++) {
     cout << total[i] << endl;
   }
   return 0;

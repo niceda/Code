@@ -1,4 +1,5 @@
 #include <iostream>
+#include <map>
 #include <vector>
 using namespace std;
 
@@ -6,19 +7,22 @@ int main() {
   int M, N, TOL, t, x, y;
   cin >> M >> N >> TOL;
   vector<int> v[N];
+  map<int, int> mapp;
   for (int i = 0; i < N; i++) {
     for (int j = 0; j < M; j++) {
       cin >> t;
       v[i].push_back(t);
+      mapp[t]++;
     }
   }
   vector<int> s;
   for (int i = 1; i < N - 1; i++) {
     for (int j = 1; j < M - 1; j++) {
-      if (v[i][j] - v[i][j + 1] > TOL && v[i][j] - v[i][j - 1] > TOL &&
-          v[i][j] - v[i + 1][j] > TOL && v[i][j] - v[i - 1][j] > TOL &&
-          v[i][j] - v[i + 1][j - 1] > TOL && v[i][j] - v[i + 1][j + 1] > TOL &&
-          v[i][j] - v[i - 1][j - 1] > TOL && v[i][j] - v[i - 1][j + 1] > TOL) {
+      if (mapp[v[i][j]] == 1 && v[i][j] - v[i][j + 1] > TOL &&
+          v[i][j] - v[i][j - 1] > TOL && v[i][j] - v[i + 1][j] > TOL &&
+          v[i][j] - v[i - 1][j] > TOL && v[i][j] - v[i + 1][j - 1] > TOL &&
+          v[i][j] - v[i + 1][j + 1] > TOL && v[i][j] - v[i - 1][j - 1] > TOL &&
+          v[i][j] - v[i - 1][j + 1] > TOL) {
         if (s.size() == 1) {
           cout << "Not Unique";
           return 0;

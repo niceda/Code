@@ -9,8 +9,7 @@ int main() {
   for (int i = 0; i < N; i++) {
     cin >> a >> b;
     float t = sqrt((a * a)+ (b * b));
-    if (t > max)
-      max = t;
+    max = t > max ? t : max;
   }
   printf("%.2f", max);
   return 0;

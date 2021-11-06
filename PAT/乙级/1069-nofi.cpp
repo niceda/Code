@@ -3,21 +3,21 @@
 using namespace std;
 
 int main() {
-  int M, N, S, n = 1, next = 0;
+  int M, N, S, n = 1, nxt = 0;
   cin >> M >> N >> S;
-  set<string> set;
-  string t;
+  set<string> sset;
+  string s;
   if (M < S) {
     cout << "Keep going...";
   } else {
     while (M--) {
-      cin >> t;
-      if ((n - S - next) % N == 0) {
-        if (set.find(t) == set.end()) {
-          set.insert(t);
-          cout << t << endl;
+      cin >> s;
+      if ((n - S - nxt) % N == 0) {
+        if (sset.find(s) == sset.end()) {
+          sset.insert(s);
+          cout << s << endl;
         } else
-          next++;
+          nxt++;
       }
       n++;
     }
