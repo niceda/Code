@@ -2,27 +2,27 @@
 using namespace std;
 
 int main() {
+  char c = getchar(), t;
   string s;
-  cin >> s;
-  string sub1 = s.substr(1, s.find('E') - 1), sub2 = s.substr(s.find('E') + 1);
-  sub1.erase(1, 1);
-  if (sub2[0] == '+') {
-    sub2.erase(0, 1);
-    int i = std::stoi(sub2);
-    if(i >= sub1.length() - 1) {
-      sub1.append(i - sub1.length() - 1, '0');
+  while ((t = cin.get()) != 'E')
+    s += t;
+  s.erase(1, 1);
+  int e;
+  cin >> e;
+  if (e >= 0) {
+    if(s.length() - 1 >= e)
+      s.insert(1 + e, 1, '.');
+    else {
+      string temp(e - s.length() + 1, '0');
+      s += temp;
     }
-    else
-      sub1.insert(i+1,1,'.');
-
+  } else {
+    string temp1 = "0.";
+    string temp2(abs(e) - 1, '0');
+    s = temp1 + temp2 + s;
   }
-  if (sub2[0] == '-') {
-    sub2.erase(0,1);
-    int i = std::stoi(sub2);
-    sub1.insert(0,i,'0');
-    sub1.insert(1,1,'.');
-  }
-  if(s[0] == '-') cout << s[0];
-  cout << sub1;
+  if (c == '-')
+    cout << c;
+  cout << s;
   return 0;
 }

@@ -25,7 +25,7 @@ int main() {
   printf("%d %d %d\n", c, b, a);
   char maxjia = m1['C'] > m1['B'] ? 'C' : 'B';
   maxjia = m1['J'] > m1[maxjia] ? 'J' : maxjia;
-  char maxyi = m1['C'] > m1['B'] ? 'C' : 'B';
-  maxjia = m1['J'] > m1[maxjia] ? 'J' : maxjia;
+  char maxyi = m2['C'] > m2['B'] ? 'C' : 'B';
+  maxyi = m2['J'] > m2[maxyi] ? 'J' : maxyi;
   cout << maxjia << " " << maxyi;
 }

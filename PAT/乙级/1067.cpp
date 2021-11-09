@@ -5,14 +5,16 @@ int main() {
   string password, t;
   int N;
   cin >> password >> N >> t;
+  getchar();
    while (t != "#" && N != 0) {
+
     if (t == password) {
       cout << "Welcome in";
       break;
     } else {
       cout << "Wrong password: " << t << endl;
     }
-    cin >> t;
+    getline(cin, t);
     N--;
   }
   if (N == 0)

@@ -12,9 +12,9 @@ bool ispdnum(string s) {
 
 int main() {
   string s;
-  int cnt = 0;
+  int n = 10;
   cin >> s;
-  while (!ispdnum(s) && cnt != 10) {
+  while (!ispdnum(s) && n--) {
     string sre = s, temp;
     reverse(sre.begin(), sre.end());
     int carry = 0, a;
@@ -24,13 +24,13 @@ int main() {
       temp.push_back(a + '0');
     }
     if (carry == 1)
-      temp.push_back('1');
+      temp = temp + '1';
     reverse(temp.begin(), temp.end());
     cout << s << " + " << sre << " = " << temp << endl;
     s = temp;
-    cnt++;
+    n++;
   }
-  if (cnt == 10)
+  if (n == 10)
     cout << "Not found in 10 iterations.";
   else
     cout << s << " is a palindromic number.";

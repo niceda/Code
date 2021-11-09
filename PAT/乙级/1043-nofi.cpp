@@ -24,28 +24,23 @@ int main() {
     if(max < c[i])
       max = c[i];
   }
-  for (int i = 0; i < max; i++) {
-    if(c[0] > 0) {
+  while(max--) {
+    if(c[0]-- > 0) {
       cout << 'P';
-      c[0]--;
     }
-    if(c[1] > 0) {
+    if(c[1]-- > 0) {
       cout << 'A';
-      c[1]--;
     }
-    if(c[2] > 0) {
+    if(c[2]-- > 0) {
       cout << 'T';
-      c[2]--;
     }
-    if(c[3] > 0) {
+    if(c[3]-- > 0) {
       cout << 'e';
-      c[3]--;
     }
-    if(c[4] > 0) {
+    if(c[4]-- > 0) {
       cout << 's';
-      c[4]--;
     }
-    if(c[5] > 0) {
+    if(c[5]-- > 0) {
       cout << 't';
       c[5]--;
     }

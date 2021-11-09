@@ -19,9 +19,9 @@ int main() {
   int n;
   cin >> n;
   string xx, id;
-  int score, num = 1, cnt = 0;
+  int score, num = 0, cnt = 0;
   map<string, int> m;
-  vector<node> v(n + 1);
+  vector<node> v(n);
   for (int i = 0; i < n; i++) {
     cin >> id >> score >> xx;
     for (int j = 0; j < xx.length(); j++) {
@@ -32,22 +32,19 @@ int main() {
       v[m[xx]].xx = xx;
       cnt++;
     }
+    v[m[xx]].cnt++;
     v[m[xx]].jq +=
         id[0] == 'B' ? score / 1.5 : (id[0] == 'A' ? score : score * 1.5);
-    v[m[xx]].cnt++;
   }
   sort(v.begin(), v.end(), cmp);
   cout << cnt << endl;
-  int temp = 1;
+  int rank = 0, pres = -1;
   for (int i = 0; i < cnt; i++) {
-    if (i == 0)
-      printf("1 %s %d %d\n", v[i].xx.c_str(), (int)v[i].jq, v[i].cnt);
-    else if (v[i].jq == v[i - 1].jq)
-      printf("%d %s %d %d\n", temp, v[i].xx.c_str(), (int)v[i].jq, v[i].cnt);
-    else {
-      printf("%d %s %d %d\n", i+1, v[i].xx.c_str(), (int)v[i].jq, v[i].cnt);
-      temp = i+1;
-    }
+    if (pres != (int)v[i].jq) rank = i + 1;
+    pres = (int)v[i].jq;
+    printf("%d ", rank);
+    cout << v[i].xx;
+    printf(" %d %d\n", (int)v[i].jq, v[i].cnt);
   }
   return 0;
 }
