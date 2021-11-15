@@ -12,13 +12,13 @@ int main() {
     scanf("%d", &weight[i]);
   }
   fill(e[0], e[0] + 510 * 510, INF);
-  fill(d, d + 510, INF);
   int a, b, c;
   for (int i = 0; i < m; i++) {
     scanf("%d%d%d", &a, &b, &c);
     e[a][b] = e[b][a] = c;
   }
 
+  fill(d, d + 510, INF);
   d[st] = 0;
   w[st] = weight[st];
   num[st] = 1;

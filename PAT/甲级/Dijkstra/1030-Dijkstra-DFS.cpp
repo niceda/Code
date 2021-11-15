@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-int n, m, sp, sp;
+int n, m, st, sp;
 int e[510][510], d[510], cost[510][510];
 vector<int> pre[510];
 bool vis[510] = {false};
@@ -31,7 +31,7 @@ void DFS(int v) {
 }
 
 int main() {
-  scanf("%d%d%d%d", &n, &m, &sp, &sp);
+  scanf("%d%d%d%d", &n, &m, &st, &sp);
   fill(e[0], e[0] + 510 * 510, INF);
   for (int i = 0; i < m; i++) {
     int a, b, c, d;
