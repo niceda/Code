@@ -1,0 +1,284 @@
+\section{插值}
+\subsection{多项式插值}
+设在区间 $[a, b]$ 上给定 $n+1$ 个点
+$$
+a \leq x_{0}<x_{1}<\cdots<x_{n} \leq b
+$$
+上的函数值 $y_{i}=f\left(x_{i}\right)(i=0,1, \cdots, n)$, 求次数不超过 $n$ 的多项式, 使
+\begin{equation}
+P\left(x_{i}\right)=y_{i}, \quad i=0,1, \cdots, n
+  \label{eq:插值}
+\end{equation}
+\begin{theorem}[插值多项式的唯一性]
+ 满足条件\ref{eq:插值}式的插值多项式 $P(x)$ 是存在唯一的. 
+\end{theorem}
+
+\begin{proof}
+ 由插值条件可得到关于系数 $a_{0}, a_{1}, \cdots, a_{n}$ 的 $n+1$ 元线性方程组
+\begin{equation}
+\left\{\begin{array}{l}
+a_{0}+a_{1} x_{0}+\cdots+a_{n} x_{0}^{n}=y_{0} \\
+a_{0}+a_{1} x_{1}+\cdots+a_{n} x_{1}^{n}=y_{1} \\
+\vdots \\
+a_{0}+a_{1} x_{n}+\cdots+a_{n} x_{n}^{n}=y_{n}
+\end{array}\right.
+  \label{eq:矩阵1}
+\end{equation}
+$$
+\boldsymbol{A}=\left(\begin{array}{cccc}
+1 & x_{0} & \cdots & x_{0}^{n} \\
+1 & x_{1} & \cdots & x_{1}^{n} \\
+\vdots & \vdots & & \vdots \\
+1 & x_{n} & \cdots & x_{n}^{n}
+\end{array}\right)
+$$
+称为范德蒙德 (Vandermonde) 矩阵, 由于 $x_{i}(i=0,1, \cdots, n)$ 互异, 故
+$$
+\operatorname{det} \boldsymbol{A}=\prod_{i, j=0 \atop i>j}^{n-1}\left(x_{i}-x_{j}\right) \neq 0
+$$
+因此,线性方程组\ref{eq:矩阵1} 的解 $a_{0}, a_{1}, \cdots, a_{n}$ 存在且唯一,证毕。
+\end{proof}
+
+\subsection{lagrange插值}
+$$
+L_{n}(x)=\sum_{k=0}^{n} y_{k} \frac{\omega_{n+1}(x)}{\left(x-x_{k}\right) \omega_{n+1}^{\prime}\left(x_{k}\right)}
+$$
+$
+\text { 其中 } \omega_{n+1}(x)=\prod_{j=0}^{n}\left(x-x_{j}\right) \text {,} \omega_{n+1}^{\prime}\left(x_{j}\right)=\prod_{i \neq j}\left(x_{j}-x_{i}\right)
+$
+$$
+R_{n}(x)=f(x)-L_{n}(x)=\frac{f^{(n+1)}(\xi)}{(n+1) !} \omega_{n+1}(x)
+$$
+\begin{note}
+ 证明
+\end{note}
+
+\subsection{均差和牛顿插值}
+
+\subsubsection{均差}
+
+$(k+1)$ 阶均差：
+$$
+\begin{aligned}
+f\left[x_{0}, \ldots, x_{k+1}\right] &=\frac{f\left[x_{0}, x_{1}, \ldots, x_{k}\right]-f\left[x_{1}, \ldots, x_{k}, x_{k+1}\right]}{x_{0}-x_{k+1}} \\
+&=\frac{f\left[x_{0}, \ldots, x_{k-1}, x_{k}\right]-f\left[x_{0}, \ldots, x_{k-1}, x_{k+1}\right]}{x_{k}-x_{k+1}}
+\end{aligned}
+$$
+
+均差有如下的基本性质:
+\begin{enumerate}
+  \item[(1)] $k$ 阶均差可表示为函数值 $f\left(x_{0}\right), f\left(x_{1}\right), \cdots, f\left(x_{k}\right)$ 的线性组合, 即
+  $$
+  f\left[x_{0}, x_{1}, \cdots, x_{k}\right]=\sum_{j=0}^{k} \frac{f\left(x_{j}\right)}{\left(x_{j}-x_{0}\right) \cdots\left(x_{j}-x_{j-1}\right)\left(x_{j}-x_{j+1}\right) \cdots\left(x_{j}-x_{k}\right)}
+  $$
+  \item[(2)]对称性
+  $$
+  f\left[x_{0}, x_{1}, \cdots, x_{k}\right]=f\left[x_{1}, x_{0}, x_{2}, \cdots, x_{k}\right]=\cdots=f\left[x_{1}, \cdots, x_{k}, x_{0}\right]
+  $$
+  \item[(3)]  若 $f(x)$ 在 $[a, b]$ 上存在 $n$ 阶导数, 且节点 $x_{0}, x_{1}, \cdots, x_{n} \in[a, b]$, 则 $n$ 阶均差与导数的关系为
+  $$
+  f\left[x_{0}, x_{1}, \cdots, x_{n}\right]=\frac{f^{(n)}(\xi)}{n !}, \quad \xi \in[a, b] .
+  $$
+  \item[(4)] 若$f\left(x\right)$是$n$次多项式，则其$k$阶差商$f\left[x_{0}, x_{1} \cdots, x_{k-1}, x\right]$当$k \leq n$ 时是一个 $n-k$ 次多项式，而当 $k>n$ 时恒为零.
+\end{enumerate}
+
+\begin{table}[htbp]
+\centering
+\caption{均差表}
+\begin{tabular}{c|c|c|c|c|c}
+\hline$x_{k}$ & $f\left(x_{k}\right)$ & 一阶均差 & 二阶均差 & 三阶均差 & 四阶均差 \\
+\hline$x_{0}$ & $f\left(x_{0}\right)$ & & & & \\
+$x_{1}$ & $f\left(x_{1}\right)$ & $\underline{f\left[x_{0}, x_{1}\right]}$ & & & \\
+$x_{2}$ & $f\left(x_{2}\right)$ & $f\left[x_{1}, x_{2}\right]$ & $\underline{f\left[x_{0}, x_{1}, x_{2}\right]}$ & & \\
+$x_{3}$ & $f\left(x_{3}\right)$ & $f\left[x_{2}, x_{3}\right]$ & $f\left[x_{1}, x_{2}, x_{3}\right]$ & $\underline{f\left[x_{0}, x_{1}, x_{2}, x_{3}\right]}$ & \\
+$x_{4}$ & $f\left(x_{4}\right)$ & $f\left[x_{3}, x_{4}\right]$ & $f\left[x_{2}, x_{3}, x_{4}\right]$ & $f\left[x_{1}, x_{2}, x_{3}, x_{4}\right]$ & $\underline{f\left[x_{0}, x_{1}, x_{2}, x_{3}, x_{4}\right]}$ \\
+$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection{牛顿插值}
+
+$\begin{aligned} P_{n}(x)=& f\left(x_{0}\right)+f\left[x_{0}, x_{1}\right]\left(x-x_{0}\right)+f\left[x_{0}, x_{1}, x_{2}\right]\left(x-x_{0}\right)\left(x-x_{1}\right)+\cdots \\ &+f\left[x_{0}, x_{1}, \cdots, x_{n}\right]\left(x-x_{0}\right) \cdots\left(x-x_{n-1}\right) \\ R_{n}(x)=& f(x)-P_{n}(x)=f\left[x, x_{0}, \cdots, x_{n}\right] \omega_{n+1}(x) \end{aligned}$
+
+\subsubsection{差分形式的牛顿插值公式}
+
+当节点等距分布时: $x_{i}=x_{0}+i h \quad(i=0, \ldots, n)$
+\begin{itemize}
+\item 向前差分： 
+  $$
+  \begin{aligned}
+  &\Delta f_{i}=f_{i+1}-f_{i} \\
+  &\Delta^{k} f_{i}=\Delta\left(\Delta^{k-1} f_{i}\right)=\Delta^{k-1} f_{i+1}-\Delta^{k-1} f_{i}
+  \end{aligned}
+  $$
+\item 向后差分： 
+  $$
+  \begin{aligned}
+  &\nabla f_{i}=f_{i}-f_{i-1} \\
+  &\nabla^{k} f_{i}=\nabla^{k-1} f_{i}-\nabla^{k-1} f_{i-1}
+  \end{aligned}
+  $$
+\item 中心差分：
+  $$
+  \delta^{k} f_{i}=\delta^{k-1} f_{i+\frac{1}{2}}-\delta^{k-1} f_{i-\frac{1}{2}}
+  $$
+其中 $f_{i \pm \frac{1}{2}}=f\left(x_{i} \pm \frac{h}{2}\right)$
+\end{itemize}
+
+\textbf{差分重要性质:}
+\begin{itemize}
+  \item 线性: 例如 $\Delta(a f(x)+b g(x))=a \Delta f+b \Delta g$
+  \item 若$f(x)$ 是 $m$ 次多项式，则 $\Delta^{k} f(x)(0 \leq k \leq m)$ 是 $m-k$ 次多项 式, 而 $\Delta^{k} f(x)=0 \quad(k>m)$
+  \item 差分值可由函数值算出：\\
+    $\Delta^{n} f_{k}=(\mathrm{E}-\mathrm{I})^{n} f_{k}=\sum_{j=0}^{n}(-1)^{j}\left(\begin{array}{l}n \\ j\end{array}\right) \mathrm{E}^{n-j} f_{k}=\sum_{j=0}^{n}(-1)^{j}\left(\begin{array}{l}n \\ j\end{array}\right) f_{n+k-j}$
+  \item 函数值可由差分值算出：$f_{n+k}=\sum_{j=0}^{n}\left(\begin{array}{l}n \\ j\end{array}\right) \Delta^{j} f_{k}$
+  \item
+  $$
+  \begin{aligned}
+  &f\left[x_{0}, \ldots, x_{k}\right]=\frac{\Delta^{k} f_{0}}{k ! h^{k}} \\
+  &f\left[x_{n}, x_{n-1} \ldots, x_{n-k}\right]=\frac{\nabla^{k} f_{n}}{k ! h^{k}}
+  \end{aligned}
+  $$
+  \item 差分与导数的关系： $\Delta^{n} f_{k}=h^{n} f^{(n)}(\xi), \quad$ 其中 $\xi \in\left(x_{k}, x_{k+n}\right) .$
+\end{itemize}
+\begin{note}
+  证明
+\end{note}
+
+\textbf{牛顿公式}:\\
+$N_{n}(x)=f\left(x_{0}\right)+f\left[x_{0}, x_{1}\right]\left(x-x_{0}\right)+\ldots+f\left[x_{0}, \ldots, x_{n}\right]\left(x-x_{0}\right) \ldots\left(x-x_{n-1}\right)$
+
+\textbf{牛顿前插公式}\\
+$
+\text { 设 } x=x_{0}+t h(0 \leq t \leq 1) \text { ，则 } N_{n}(x)=N_{n}\left(x_{0}+t h\right)=\sum\limits_{k=0}^{n}\left[\begin{array}{l}
+t \\
+k
+\end{array}\right] \Delta^{k} f\left(x_{0}\right)
+$
+$$
+R_{n}(x)=\frac{f^{(n+1)}(\xi)}{(n+1) !} t(t-1) \ldots(t-n) h^{n+1}, \xi \in\left(x_{0}, x_{n}\right)
+$$
+
+\textbf{牛顿后插公式}\\
+将节点倒序\\
+$N_{n}(x)=f\left(x_{n}\right)+f\left[x_{n}, x_{n-1}\right]\left(x-x_{n}\right)+\ldots+f\left[x_{n}, \ldots, x_{0}\right]\left(x-x_{n}\right) \ldots\left(x-x_{1}\right)$
+$$
+\begin{gathered}
+\text { 设 } x=x_{n}+t h(-1 \leq t \leq 0) \text {, 则 } N_{n}(x)=N_{n}\left(x_{n}+t h\right)=\sum_{k=0}^{n}(-1)^{k}\left(\begin{array}{c}
+-t \\
+k
+\end{array}\right) \nabla^{k} f\left(x_{n}\right) \\
+R_{n}(x)=\frac{f^{(n+1)}(\xi)}{(n+1) !} t(t+1) \ldots(t+n) h^{n+1}, \quad \xi \in\left(x_{0}, x_{n}\right)
+\end{gathered}
+$$
+
+\begin{note}
+  一般当 $x$ 靠近 $x_{0}$ 时用前插，靠近 $x_{n}$ 时用后插，故两种公式亦称为表初公式和表末公式。
+\end{note}
+
+使用Newton前插或后插公式，先构造差分表如下:
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{|cccccc|}
+    \hline$x_{k}$ & $f\left(x_{k}\right)$ & $\Delta y_{k}$ & $\Delta^{2} y_{k}$ & $\Delta^{3} y_{k}$ & $\Delta^{4} y_{k}$ \\
+    \hline$x_{0}$ & $y_{0}$ & $\Delta y_{0}$ & & & \\
+    $x_{1}$ & $y_{1}$ & $\Delta y_{1}$ & $\Delta^{2} y_{0}$ & $\Delta^{3} y_{0}$ & $\cdots$ \\
+    $x_{2}$ & $y_{2}$ & $\Delta y_{2}$ & $\Delta^{2} y_{1}$ & & \\
+    $x_{3}$ & $y_{3}$ & & & & \\
+    \hline
+  \end{tabular}
+\end{table}
+
+
+\subsection{埃尔米特插值}
+插值多项式要求在插值节点上函数值相等, 有的实际问题还要求在节点上导数值相等, 甚至高阶导数值也相等, 满足这种要求的插值多项式
+称为埃尔米特 (Hermite)插值多项式.
+
+\begin{note}
+  N个条件可以确定N-1阶多项式
+\end{note}
+
+两个典型的埃尔米特插值
+\begin{itemize}
+  \item 两个节点$x_{0}$、$x_{1}$的三次Hermite插值$H3$:
+  $$
+  \begin{aligned}
+  &\text { 设 } H_{3}(x)=\alpha_{0}(x) f_{0}+\alpha_{1}(x) f_{1}+\beta_{0}(x) f_{0}^{\prime}+\beta_{1}(x) f_{1}^{\prime} \\
+  &\text { 解得 } \alpha_{0}(x)=\left(1+2 \frac{x-x_{0}}{x_{1}-x_{0}}\right)\left(\frac{x-x_{1}}{x_{0}-x_{1}}\right)^{2}=\left(1+2 l_{1}(x)\right) \cdot l_{0}^{2}(x) \\
+  &\alpha_{1}(x)=\left(1+2 \frac{x-x_{1}}{x_{0}-x_{1}}\right)\left(\frac{x-x_{0}}{x_{1}-x_{0}}\right)^{2}=\left(1+2 l_{0}(x)\right) \cdot l_{1}^{2}(x) \\
+  &\beta_{0}(x)=\left(x-x_{0}\right)\left(\frac{x-x_{1}}{x_{0}-x_{1}}\right)^{2}=\left(x-x_{0}\right) l_{0}^{2}(x) \\
+  &\beta_{1}(x)=\left(x-x_{1}\right)\left(\frac{x-x_{0}}{x_{1}-x_{0}}\right)^{2}=\left(x-x_{1}\right) l_{1}^{2}(x) \\
+  &余项 R_{3}(x)=f(x)-H_{3}(x)=\frac{f^{4}(\xi)}{4 !}\left(x-x_{0}\right)^{2}\left(x-x_{1}\right)^{2} . \xi \in\left(x_{0}, x_{1}\right)
+  \end{aligned}
+  $$
+  \item 由 $f_{0}, f_{1}, f_{1}^{\prime}, f_{2}$ 生成的三次 Hermite插值 $H_{3}$ : \\
+  先由 $f_{0}, f_{1}, f_{2}$ 作 $L_{2}$, \\
+  再令 $H_{3}(x)=L_{2}(x)+K\left(x-x_{0}\right)\left(x-x_{1}\right)\left(x-x_{2}\right), H_{3}^{\prime}\left(x_{1}\right)=f_{1}{ }^{\prime}\text {解} K$.\\
+  有 $R(x)=\frac{f^{4}(\xi)}{4 !}\left(x-x_{0}\right)\left(x-x_{1}\right)^{2}\left(x-x_{2}\right)$.
+  \item 推广：$f_{0}, f_{0}^{\prime}, f_{1}, f_{1}^{\prime}, f_{2}$. 有\\
+  $H_{4}(x)=L_{2}(x)+(a x+b)\left(x-x_{0}\right)\left(x-x_{1}\right)\left(x-x_{2}\right)$ 解 $a,b$ \\
+  $R(x)=\frac{f^{5}(\xi)}{5 !}\left(x-x_{0}\right)^{2}\left(x-x_{1}\right)^{2}\left(x-x_{2}\right)$
+\end{itemize}
+
+\subsection{分段低次插值}
+
+\subsubsection{Runge现象}
+${L_{n}{(x)}}$不一定收敛于$f(x)$ 如$(\displaystyle\frac{1}{1 + x^2})$ \\
+不适宜在大范围高次插值
+
+\subsubsection{分段线性插值函数}
+分段线性插值就是通过插值点用折线段连接起来逼近 $f(x)$. 设已知节点 $a=x_{0}<x_{1}$ $<\cdots<x_{n}=b$ 上的函数值 $f_{0}, f_{1}, \cdots, f_{n}$, 记 $h_{k}=x_{k+1}-x_{k}, h=\max _{k} h_{k}$, 求一折线函数 $I_{h}(x)$ 满足:\\
+(1) $I_{h}(x) \in C[a, b]$;\\
+(2) $I_{h}\left(x_{k}\right)=f_{k}(k=0,1, \cdots, n)$;\\
+(3) $I_{h}(x)$ 在每个小区间 $\left[x_{k}, x_{k+1}\right]$ 上是线性函数.\\
+则称 $I_{h}(x)$ 为分段线性插值函数.
+由定义可知 $I_{h}(x)$ 在每个小区间 $\left[x_{k}, x_{k+1}\right]$ 上可表示为
+$$
+I_{h}(x)=\frac{x-x_{k+1}}{x_{k}-x_{k+1}} f_{k}+\frac{x-x_{k}}{x_{k+1}-x_{k}} f_{k+1}, \quad x_{k} \leq x \leq x_{k+1}, \quad k=0,1, \cdots, n-1
+$$
+分段线性插值的误差估计可利用插值余项$R_{1}{(x)}$得到
+$$
+\max _{x_{k} \leq x \leq x_{k+1}}\left|f(x)-I_{h}(x)\right| \leq \frac{M_{2}}{2} \max _{x_{k} \leq x \leq x_{k+1}}\left|\left(x-x_{k}\right)\left(x-x_{k+1}\right)\right|
+$$
+或
+$$
+\max _{a \leq x \leq b}\left|f(x)-I_{h}(x)\right| \leq \frac{M_{2}}{8} h^{2},
+$$
+其中 $M_{2}=\max _{a \leq x \leq b}\left|f^{\prime \prime}(x)\right|$. 由此还可得到
+$$
+\lim _{h \rightarrow 0} I_{h}(x)=f(x)
+$$
+在 $[a, b]$ 上一致成立, 故 $I_{h}(x)$ 在 $[a, b]$ 上一致收敛到 $f(x)$.
+
+\subsubsection{分段三次埃尔米特插值}
+(1) $I_{h}(x) \in C^{1}[a, b]$;\par
+(2) $I_{h}\left(x_{k}\right)=f_{k}, I_{h}^{\prime}\left(x_{k}\right)=f_{k}^{\prime}(k=0,1, \cdots, n)$;\par
+(3) $I_{h}(x)$ 在每个小区间 $\left[x_{k}, x_{k+1}\right]$ 上是三次多项式.\par
+根据两点三次插值多项式 (4.12) 可知, $I_{h}(x)$ 在区间 $\left[x_{k}, x_{k+1}\right]$ 上的表达式为
+$$
+\begin{aligned}
+I_{h}(x)=&\left(\frac{x-x_{k+1}}{x_{k}-x_{k+1}}\right)^{2}\left(1+2 \frac{x-x_{k}}{x_{k+1}-x_{k}}\right) f_{k}+\left(\frac{x-x_{k}}{x_{k+1}-x_{k}}\right)^{2}\left(1+2 \frac{x-x_{k+1}}{x_{k}-x_{k+1}}\right) f_{k+1} \\
+&+\left(\frac{x-x_{k+1}}{x_{k}-x_{k+1}}\right)^{2}\left(x-x_{k}\right) f_{k}^{\prime}+\left(\frac{x-x_{k}}{x_{k+1}-x_{k}}\right)^{2}\left(x-x_{k+1}\right) f_{k+1}^{\prime}
+\end{aligned}
+$$
+上式对于 $k=0,1, \cdots, n-1$ 成立.
+利用三次埃尔米特插值多项式的余项,可得误差估计
+$$
+\left|f(x)-I_{h}(x)\right| \leq \frac{1}{384} h_{k}^{4} \max _{x_{k} \leq x \leq x_{k+1}}\left|f^{(4)}(x)\right|, \quad x \in\left[x_{k}, x_{k+1}\right],
+$$
+
+\subsection{三次样条插值}
+
+\subsubsection{三次样条插值函数}
+(1)$S(x) \in C^{2}[a, b]$\par
+(2)在每个小区间 $\left[x_{j}, x_{j+1}\right]$ 上是三次多项式\par
+(3)$S\left(x_{j}\right)=y_{j}, \quad j=0,1, \cdots, n$\par
+第一类（一阶）边界条件：$S^{\prime}\left(x_{0}\right)=f_{0}^{\prime}, \quad S^{\prime}\left(x_{n}\right)=f_{n}^{\prime}$\par
+第二类（二阶）边界条件：$S^{\prime \prime}\left(x_{0}\right)=f_{0}^{\prime \prime}, \quad S^{\prime \prime}\left(x_{n}\right)=f_{n}^{\prime \prime}$,\par
+$S^{\prime \prime}\left(x_{0}\right)=S^{\prime \prime}\left(x_{n}\right)=0$被称为自然边界\par
+第三类（周期）边界条件：$S_{0}^{(p)}\left(x_{0}\right)=S_{n-1}^{p}\left(x_{n}\right), p=0,1,2 .$\par
+
+\subsubsection{样条函数的建立}
+
+\subsubsection{误差界与收敛性}

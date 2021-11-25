@@ -166,7 +166,7 @@
 % 行距设置
 \linespread{1.3}
 \setlength{\parskip}{3mm}
-\setlength{\parindent}{2em}
+% \setlength{\parindent}{2em}
 % 定义护眼模式 geye=true
 \RequirePackage{xcolor}
 \RequirePackage{silence}
@@ -343,6 +343,28 @@
   \ifdefstring{\ELEGANT@cite}{numbers}{
     \citestyle{numbers}}{\relax}
   }{\relax}
+
+% \ifdefstring{\ELEGANT@lang}{cn}{
+%   \theoremstyle{plain}% default
+%   \newtheorem{theorem}{Theorem}[section] %
+%   \newtheorem{lemma}[theorem]{Lemma} %
+%   \newtheorem{proposition}[theorem]{Proposition} %
+%   \newtheorem*{corollary}{Corollary} %
+%   \theoremstyle{definition} %
+%   \newtheorem{definition}{Definition}[section] %
+%   \newtheorem{conjecture}{Conjecture}[section] %
+%   \newtheorem{example}{Example}[section] %
+%   \theoremstyle{remark} %
+%   \newtheorem*{remark}{Remark} %
+%   \newtheorem*{note}{Note} %
+%   \newtheorem{case}{Case} 
+%   \renewcommand*{\proofname}{%
+%     \normalfont\bfseries\color{ecolor} Proof}
+%   \newcommand\versiontext{Version: }%
+%   \newcommand\updatetext{Update: }%
+%   \RequirePackage[\ELEGANT@cite,sort&compress]{natbib}
+%   \bibliographystyle{\ELEGANT@bibstyle}}{%
+%   \relax}
 
 \ifdefstring{\ELEGANT@lang}{en}{
   \theoremstyle{plain}% default

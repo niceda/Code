@@ -1,0 +1,69 @@
+\section{绪论}
+
+\begin{definition}[绝对误差]
+设 $x$ 为准确值, $x^{*}$ 为 $x$ 的一个近似值, 称 $e^{*}=x^{*}-x$ 为近似值的绝对误差
+\end{definition}
+
+\begin{definition}[相对误差]
+我们把近似值的误差 $e^{*}$ 与准确值 $x$ 的比值
+$$
+\frac{e^{*}}{x}=\frac{x^{*}-x}{x}
+$$
+称为近似值 $x^{*}$ 的相对误差, 记作 $e_{r}^{*}$.
+\end{definition}
+
+\begin{definition}[相对误差限]
+  $\varepsilon_{r}^{*}=\frac{\varepsilon^{*}}{\left|x^{*}\right|}$
+\end{definition}
+
+\begin{definition}[有效数字]
+若近似值 $x^{*}$ 的误差限是某一位的半个单位, 该位到 $x^{*}$ 的第一位非零数字共 有 $n$ 位, 就说 $x^{*}$ 有 $n$ 位有效数字. 它可表示为
+\begin{equation}
+x^{*}=\pm 10^{m} \times\left(a_{1}+a_{2} \times 10^{-1}+\cdots+a_{n} \times 10^{-(n-1)}\right),
+\end{equation}
+其中 $a_{i}(i=1,2, \cdots, n)$ 是0 到9 中的一个数字, $a_{1} \neq 0, m$ 为整数, 且
+\begin{equation}
+\left|x-x ^{*}\right| \leq \frac{1}{2} \times 10^{m-n+1} .
+\end{equation}
+\end{definition}
+
+\begin{theorem}
+设近似数 $x^{*}$ 表示为
+\begin{equation}
+x^{*}=\pm 10^{m} \times\left(a_{1}+a_{2} \times 10^{-1}+\cdots+a_{l} \times 10^{-(l-1)}\right),
+  \label{eq:1}
+\end{equation}
+其中 $a_{i}(i=1,2, \cdots, l)$ 是 0 到 9 中的一个数字, $a_{1} \neq 0, m$ 为整数. 若 $x^{*}$ 具有 $n$ 位有效数字, 则其相对误差限
+$$
+\varepsilon_{r}^{*} \leq \frac{1}{2 a_{1}} \times 10^{-(n-1)}
+$$
+反之, 若 $x^{*}$ 的相对误差限 $\varepsilon_{r}^{*} \leq \frac{1}{2\left(a_{1}+1\right)} \times 10^{-(n-1)}$, 则 $x^{*}$ 至少具有 $n$ 位有效数字.
+\end{theorem}
+
+\begin{proof}
+由(\ref{eq:1})式可得
+$$
+a_{1} \times 10^{m} \leq \left|x^{*}\right|<\left(a_{1}+1\right) \times 10^{m}
+$$
+当 $x^{*}$ 具有 $n$ 位有效数字时
+$$
+\varepsilon_{r}^{*}=\frac{\left|x-x^{*}\right|}{\left|x^{*}\right|} \leq \frac{0.5 \times 10^{m-n+1}}{a_{1} \times 10^{m}}=\frac{1}{2 a_{1}} \times 10^{-n+1}
+$$
+反之,由
+$$
+\begin{aligned}
+\left|x-x^{*}\right| &=\left|x^{*}\right| \varepsilon_{r}^{*}<\left(a_{1}+1\right) \times 10^{m} \times \frac{1}{2\left(a_{1}+1\right)} \times 10^{-n+1} \\
+&=0.5 \times 10^{m-n+1},
+\end{aligned}
+$$
+故 $x^{*}$ 至少具有 $n$ 位有效数字. 证毕. 
+\end{proof}
+
+\begin{corollary}
+已知 $x^{*}$ 的相对误差限可写为 $\varepsilon_{r}^{*}=\frac{1}{2\left(a_{1}+1\right)} \times 10^{-n+1}$
+,则 $\left|x-x^{*}\right| \leq \varepsilon_{r}^{*} \cdot\left|x^{*}\right|=\frac{10^{-n+1}}{2\left(a_{1}+1\right)} \times 0 . a_{1} a_{2} \cdots \times 10^{m}$
+$$
+<\frac{10^{-n+1}}{2\left(a_{1}+1\right)} \cdot\left(a_{1}+1\right) \times 10^{m-1}=0.5 \times 10^{m-n}
+$$
+可见 $x^{*}$ 至少有 $n$ 位有效数字。 
+\end{corollary}
