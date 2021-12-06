@@ -1,7 +1,8 @@
-
 ##### Look
-1. max_element()
-2. distance();
+1. distance();
+2. partial_sort();
+3. is_permutation
+4. unique
 
 ##### 技巧
 - 字符串转数字
@@ -53,6 +54,21 @@ int i = std::stoi(s); 还有stol(long), stof(float), stod(double)等
 - vector<vector<int> > v; v.resize(n, vector<int>(m));
 - 圆周率
     - double pi = acos(-1.0);
+- \<algorithm\>
+  - is_heap
+  - is_sorted
+  - median
+  - max_element
+  - min_element
+  - reverse
+  - is_permutation
+  - next_permutation
+  - prev_permutation
+  - merge
+  - sort
+  - unique
+  - fill
+  - mismatch
 
 ##### 总结
 - long long int 长度为64, long int 为32,int 一般为32.
