@@ -1,5 +1,5 @@
-#include <cmath>
 #include <algorithm>
+#include <cmath>
 #include <iostream>
 using namespace std;
 
@@ -18,11 +18,14 @@ long long find_radix(string n, long long num) {
   long long low = (isdigit(it) ? it - '0' : it - 'a' + 10) + 1;
   long long high = max(num, low);
   while (low <= high) {
-    long long  mid = (low + high) / 2;
+    long long mid = (low + high) / 2;
     long long t = convert(n, mid);
-    if (t < 0 || t > num) high = mid - 1;
-    else if (t == num) return mid;
-    else low = mid + 1;
+    if (t < 0 || t > num)
+      high = mid - 1;
+    else if (t == num)
+      return mid;
+    else
+      low = mid + 1;
   }
   return -1;
 }
@@ -31,10 +34,11 @@ int main() {
   string n1, n2;
   long long tag, radix, result_radix;
   cin >> n1 >> n2 >> tag >> radix;
-  result_radix = tag == 1 ? find_radix(n2, convert(n1, radix)) : find_radix(n1, convert(n2, radix));
+  result_radix = tag == 1 ? find_radix(n2, convert(n1, radix))
+                          : find_radix(n1, convert(n2, radix));
   if (result_radix != -1) {
     printf("%lld", result_radix);
-  }else {
+  } else {
     printf("Impossible");
   }
   return 0;
