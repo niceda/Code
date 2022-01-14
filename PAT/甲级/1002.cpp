@@ -1,28 +1,34 @@
 #include <iostream>
+#include <map>
 using namespace std;
 
 int main() {
-  int k, n;
-  double v[1001] = {0}, a;
+  map<int, float> result;
+  int k, e, count = 0;
+  float c;
   cin >> k;
   for (int i = 0; i < k; i++) {
-    cin >> n >> a;
-    v[n] += a;
+    cin >> e;
+    cin >> result[e];
   }
   cin >> k;
   for (int i = 0; i < k; i++) {
-    cin >> n >> a;
-    v[n] += a;
+    cin >> e >> c;
+    result[e] += c;
   }
-  k = 0;
-  for (int i = 0; i < 1001; i++) {
-    if (v[i] != 0)
-      k++;
+
+  for (auto i = result.begin(); i != result.end();) {
+    if ((*i).second == 0) {
+      i = result.erase(i);
+    } else {
+      count++;
+      i++;
+    }
   }
-  cout << k;
-  for (int i = 1000; i >= 0; i--) {
-    if (v[i] != 0)
-      printf(" %d %.1lf", i, v[i]);
+
+  cout << count;
+  for (auto i = result.rbegin(); i != result.rend(); i++) {
+    printf(" %d %.1f", i->first, i->second);
   }
   return 0;
 }

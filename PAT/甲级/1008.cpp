@@ -1,17 +1,20 @@
-#include<iostream>
+#include <iostream>
+#include <vector>
 using namespace std;
 
 int main() {
-  int a, now = 0, sum = 0;
-  cin >> a;
-  while(cin >> a) {
-    if (a > now) 
-      sum += 6 * (a - now);
-    else
-      sum += 4 * (now - a);
-    now = a;
-    sum += 5;
+  int n;
+  cin >> n;
+  int c = 0, r, total = 0;
+  for (int i = 0; i < n; i++) {
+    cin >> r;
+    if (r > c) {
+      total += (r - c) * 6 + 5;
+    } else {
+      total += (c - r) * 4 + 5;
+    }
+    c = r;
   }
-  cout << sum;
+  cout << total;
   return 0;
 }

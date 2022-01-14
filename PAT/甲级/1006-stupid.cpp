@@ -30,19 +30,19 @@ int main() {
         (come[i].hour == t1.hour && come[i].minu < t1.minu) ||
         (come[i].hour == t1.hour && come[i].minu == t1.minu &&
          come[i].sec < t1.sec)) {
-         t1.hour = come[i].hour;
-         t1.minu = come[i].minu;
-         t1.sec = come[i].sec;
-         id1 = id[i];
+      t1.hour = come[i].hour;
+      t1.minu = come[i].minu;
+      t1.sec = come[i].sec;
+      id1 = id[i];
     }
     if ((back[i].hour > t2.hour) ||
         (back[i].hour == t2.hour && back[i].minu > t2.minu) ||
         (back[i].hour == t2.hour && back[i].minu == t2.minu &&
          back[i].sec > t2.sec)) {
-         t2.hour = back[i].hour;
-         t2.minu = back[i].minu;
-         t2.sec = back[i].sec;
-         id2 = id[i];
+      t2.hour = back[i].hour;
+      t2.minu = back[i].minu;
+      t2.sec = back[i].sec;
+      id2 = id[i];
     }
   }
   cout << id1 << " " << id2;

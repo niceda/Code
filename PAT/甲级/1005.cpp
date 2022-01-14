@@ -1,18 +1,20 @@
-#include <iostream>
+#include<iostream>
+#include<vector>
 using namespace std;
 
 int main() {
-  string v[10] = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
   string s;
-  long total = 0;
   cin >> s;
+  int total = 0;
   for (int i = 0; i < s.length(); i++) {
     total += s[i] - '0';
   }
-  s = to_string(total);
-  for (int i = 0; i < s.length(); i++) {
+  string results = to_string(total);
+  string digits[] = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+  for (int i = 0; i < results.length(); i++) {
     if (i != 0) cout << " ";
-    cout << v[s[i] - '0'];
+    cout << digits[results[i] - '0'];
   }
+
   return 0;
 }
