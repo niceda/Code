@@ -27,7 +27,7 @@ int i = std::stoi(s); 还有stol(long), stof(float), stod(double)等
 - c++中的sort排序函数
   ```cpp
     - std::less<type>() // 从小到大 <
-    - std::grater<type>() // >
+    - std::greater<type>() // >
     - std::less_equal<type>() // <=
     - std::grater_equal<type>() // >=  
 

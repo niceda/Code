@@ -41,7 +41,6 @@ int main() {
   }
 
   fill(d, d + 510, INF);
-  // pre[st].push_back(st);
   d[sp] = 0;
   for (int i = 0; i < n; i++) {
     int u = -1, minn = INF;
