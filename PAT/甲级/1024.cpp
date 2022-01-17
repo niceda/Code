@@ -21,14 +21,14 @@ string dbs(string n) {
   string cn = n;
   reverse(cn.begin(), cn.end());
   string result;
-  int r = 0;
+  int carry = 0;
   for (int i = n.length() - 1; i >= 0; i--) {
-    int t = (n[i] - '0'+ cn[i] - '0' + r);
+    int t = (n[i] - '0'+ cn[i] - '0' + carry);
     result += t % 10 + '0';
-    r = t / 10;
+    carry = t / 10;
   }
-  if (r != 0) {
-    result += r + '0';
+  if (carry != 0) {
+    result += carry + '0';
   }
   reverse(result.begin(), result.end());
   return result;
