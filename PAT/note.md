@@ -81,3 +81,21 @@ int i = std::stoi(s); 还有stol(long), stof(float), stod(double)等
 - 运行超时的话，可以将unorder_map 换成 map，unorder_map的插入、删除等为常数时间，而map的为 对数时间。
 - 排序建议用引用传参，这样更快，虽然有时候不用引用传参也能通过，但还是尽量用，养成好习惯
 - 判断素数时，有时需要把0和1也要考虑进去。
+- node *root = NULL;在main里记得要加等于NULL;
+- insert(node *&root); 记得传引用;
+
+##### problem
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    double d1 = 1.555;
+    double d2 = 1.5555;
+    printf("%.2f\n", d1);
+    printf("%.3f\n", d2);
+  }
+```
+d1不进位，d2进位  
+甲级1104, 把long double 改为double, 有个测试点就通不过，应该就是这个原因。

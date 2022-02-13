@@ -1,54 +1,73 @@
+#include <algorithm>
+#include <cmath>
 #include <iostream>
+#include <map>
+#include <queue>
+#include <set>
+#include <stack>
 #include <vector>
 using namespace std;
+
 struct node {
   int data;
   node *lchild;
   node *rchild;
 };
-void insert(node *&root, int data) {
+
+void insert(node *root, int data) {
   if (root == NULL) {
     root = new node;
     root->data = data;
     root->lchild = NULL;
     root->rchild = NULL;
-    return;
+    return ;
   }
-  if (data < root->data)
+
+  if (root->data > data) {
     insert(root->lchild, data);
-  else
+  } else if (root->data <= data) {
     insert(root->rchild, data);
+  }
 }
+
 void preorder(node *root, vector<int> &v) {
-  if (root == NULL)
-    return;
+  if (root == NULL) {
+    return ;
+  }
   v.push_back(root->data);
   preorder(root->lchild, v);
   preorder(root->rchild, v);
 }
+
 void Mirpreorder(node *root, vector<int> &v) {
-  if (root == NULL)
-    return;
+  if (root == NULL) {
+    return ;
+  }
   v.push_back(root->data);
   Mirpreorder(root->rchild, v);
   Mirpreorder(root->lchild, v);
 }
+
 void postorder(node *root, vector<int> &v) {
-  if (root == NULL)
-    return;
+  if (root == NULL) {
+    return ;
+  }
   postorder(root->lchild, v);
   postorder(root->rchild, v);
   v.push_back(root->data);
 }
+
 void Mirpostorder(node *root, vector<int> &v) {
-  if (root == NULL)
-    return;
+  if (root == NULL) {
+    return ;
+  }
   Mirpostorder(root->rchild, v);
   Mirpostorder(root->lchild, v);
   v.push_back(root->data);
 }
 
-int main() { 
+
+int main() {
   vector<int> origin, pre, post, mpre, mpost;
   int n, t;
   cin >> n;
@@ -74,6 +93,8 @@ int main() {
       if (i != 0) cout << " ";
       cout << mpost[i];
     }
-  } else 
+  } else {
     cout << "NO";
-return 0; }
+  }
+  return 0;
+} 
