@@ -1,0 +1,34 @@
+##### 数据结构
+- array
+- vector
+- 链表
+- stack
+- queue
+- map
+- set
+- 树
+  - BST
+- 图
+  - 最短路径
+  - 关键路径
+  - 拓扑排序
+  - 回溯剪枝
+- heap
+  - maxHeap
+  - minHeap
+- 并查集
+
+#### 算法/设计
+
+- 排序
+- 二分
+- 哈希映射/哈希表
+- 搜索
+  - tree(preorder/inoder/postorder)
+  - 深度优先搜索
+  - 广度优先搜索
+  - 最短路径
+  - 关键路径
+  - 拓扑排序
+  - 回溯剪枝
+- 贪心

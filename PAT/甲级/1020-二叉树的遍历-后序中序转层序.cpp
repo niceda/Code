@@ -14,21 +14,16 @@ struct node {
 };
 int post[31], in[31];
 
-node *create(int postl, int postr, int inl, int inr) {
-  if (postl > postr) {
+node *create(int postLeft, int postRight, int inLeft, int inRight) {
+  if (postLeft > postRight) {
     return NULL;
   }
   node *root = new node;
-  root->data = post[postr];
-  int k;
-  for (k = inl; k <= inr; k++) {
-    if (in[k] == root->data) {
-      break;
-    }
-  }
-  int numLeft = k - inl;
-  root->lchild = create(postl, postl + numLeft - 1, inl, k - 1);
-  root->rchild = create(postl + numLeft, postr - 1, k + 1, inr);
+  root->data = post[postRight];
+  int i = inLeft;
+  while(i <= inRight && in[i] != post[postRight]) i++;
+  root->lchild = create(postLeft, postLeft + (i - inLeft) - 1, inLeft, i - 1);
+  root->rchild = create(postLeft + (i - inLeft), postRight - 1, i + 1, inRight);
   return root;
 };
 
