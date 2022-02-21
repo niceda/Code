@@ -37,14 +37,13 @@ int main() {
         last = t;
       } else {
         flag[0] = 0;
-        break;
       }
     }
     if (flag[0] == 1) {
-      if (flag[start] == 2) {
+      if (flag[start] == 2 && last == start) {
         int flagg = 1;
         for (int j = 1; j <= n; j++) {
-          if (flag[j] == 0 || (j != start && flag[j] >= 2)) {
+          if (j != start && flag[j] !=  1) {
             cout << "NO" << endl;
             flagg = 0;
             break;

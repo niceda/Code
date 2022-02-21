@@ -36,7 +36,7 @@ int main() {
   for (int i = 0; i < m; i++) {
     cin >> u >> v;
     G[u].push_back(v);
-    inDegree[u]++;
+    inDegree[v]++;
   }
   bool flag = topologicalSort();
   if (flag) cout << "G is Directed Acyclic Graph";
