@@ -21,7 +21,6 @@ void DFS(int node, int height) {
       temp.insert(node);
     }
   vis[node] = true;
-  // cout << node << "node-----------------------" << endl;
   for (int i = 0; i < v[node].size(); i++) {
     if (vis[v[node][i]] == false) {
       DFS(v[node][i], height + 1);
@@ -46,7 +45,6 @@ int main() {
       cnt++;
     }
   }
-  // cout << cnt << "---------------------------" << endl;
   if (cnt >= 2) {
     printf("Error: %d components", cnt);
     return 0;
