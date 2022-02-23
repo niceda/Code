@@ -62,9 +62,7 @@ int main() {
   vector<node> h;
   for (auto it = v.begin(); it != v.end(); it++) {
     if (vis[it->first] == false) {
-      // cout << "enter" << endl;
       dfs(it->first);
-      // cout << totaltime << " " << totalperson << endl;
       if (totaltime > k && totalperson > 2) {
         h.push_back(node{head, totalperson});
       }
