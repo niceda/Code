@@ -11,7 +11,7 @@ int table[maxn];
 void PeekMedian(int k) {
   int sum = 0, id = 0;
   while (sum + block[id] < k)
-    sum += table[id++];
+    sum += block[id++];
   int num = id * sqrN;
   while (sum + table[num] < k)
     sum += table[num++];

@@ -9,19 +9,18 @@
 using namespace std;
 
 int main() {
-  int n, m, k;
-  cin >> n >> m >> k;
+  int m, n, k;
+  cin >> m >> n >> k;
   for (int i = 0; i < k; i++) {
     int popsum = 0, max = 1, flag = 1;
-    vector<int> v(m+1);
+    vector<int> v(n+1);
     stack<int> s;
-    for (int j = 1; j <= m; j++) {
+    for (int j = 1; j <= n; j++) {
       cin >> v[j];
     }
-    for (int j = 1; j <= m; j++) {
-      if (v[j] - popsum > 5) {
+    for (int j = 1; j <= n; j++) {
+      if (v[j] - popsum > m) {
         cout << "NO" << endl;
-        // cout << "v[j] too big" << endl;
         flag = 0;
         break;
       }
@@ -34,7 +33,6 @@ int main() {
         s.pop();
       } else if (s.top() != v[j]) {
         cout << "NO" << endl;
-        // cout << "---" << endl;
         flag = 0;
         break;
       }

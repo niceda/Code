@@ -35,18 +35,17 @@ void dfs(int id) {
 }
 
 bool cmp(vector<int> &a, vector<int> &b) {
-  for (int i = 0; i < a.size() && i < b.size(); i++) {
-    if (weight[a[i]] > weight[b[i]]) {
-      return true;
-    } else if (weight[a[i]] < weight[b[i]]) {
-      return false;
-    }
+  for (int i = 0; i < min(a.size(), b.size()); i++) {
+    if (weight[a[i]] != weight[b[i]])
+      return weight[a[i]] > weight[b[i]];
   }
-  if (a.size() >= b.size()) {
-    return true;
-  } else {
-    return false;
-  }
+  // ToThink: why this dont work ?;
+  // for (int i = 0; i < a.size() && i < b.size(); i++) {
+  //   if (weight[a[i]] != weight[b[i]])
+  //     return weight[a[i]] > weight[b[i]];
+  // }
+  // ToThink: why this dont work ?;
+  // return a > b;
 }
 
 int main() {

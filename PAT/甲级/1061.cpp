@@ -16,16 +16,16 @@ int main() {
   int flag = 0;
   for (int i = 0, j = 0; i < s1.length() && j < s2.length(); i++, j++) {
     if (isupper(s1[i]) && s1[i] == s2[j]) {
-      if (flag == 0) {
+      if (flag == 0 && s1[i] >= 'A' && s1[i] <= 'G') {
         cout << week[s1[i] - 'A'];
         flag = 1;
-      } else {
+      } else if (flag == 1 && s1[i] >= 'A' && s1[i] <= 'N') {
         cout << " " << s1[i] - 'A' + 10;
         break;
       }
     }
     if (flag == 1 && isdigit(s1[i]) && s1[i] == s2[j]) {
-      cout << " " << s1[i] - '0';
+      cout << " 0" << s1[i] - '0';
       break;
     }
   }
