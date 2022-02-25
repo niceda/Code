@@ -15,6 +15,10 @@ string num2[4] = {"", " Shi", " Bai", " Qian"};
 int main() {
   string s;
   cin >> s;
+  if (s == "0") {
+    cout << "ling";
+    return 0;
+  }
   if (s[0] == '-') {
     cout << "Fu ";
     s.erase(0, 1);

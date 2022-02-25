@@ -13,7 +13,9 @@ struct node {
   int choice[5];
 };
 
-bool cmp(node a, node b) { return a.ge + a.gi > b.ge + b.gi; }
+bool cmp(node a, node b) {
+  return a.ge + a.gi != b.ge + b.gi ? a.ge + a.gi > b.ge + b.gi : a.ge > b.ge;
+}
 vector<int> result[100];
 vector<int> lastrank(100);
 
@@ -37,7 +39,7 @@ int main() {
   for (int i = 1; i < n; i++) {
     if (v[i].ge + v[i].gi == v[i - 1].ge + v[i - 1].gi &&
         v[i].ge == v[i - 1].ge) {
-      v[i].rank = v[i-1].rank;
+      v[i].rank = v[i - 1].rank;
     } else {
       v[i].rank = i + 1;
     }
@@ -57,7 +59,8 @@ int main() {
   for (int i = 0; i < m; i++) {
     sort(result[i].begin(), result[i].end());
     for (int j = 0; j < result[i].size(); j++) {
-      if (j != 0) cout << " ";
+      if (j != 0)
+        cout << " ";
       cout << result[i][j];
     }
     cout << endl;

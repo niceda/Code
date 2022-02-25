@@ -9,14 +9,14 @@
 using namespace std;
 
 struct node {
-  int num;
-  float totalprice, unitprice;
+  double num, totalprice;
 };
 
-bool cmp(node a, node b) { return a.unitprice > b.unitprice; }
+bool cmp(node a, node b) { return a.totalprice * b.num > b.totalprice * a.num; }
 
 int main() {
   int n, d;
+  double total = 0.00;
   cin >> n >> d;
   vector<node> v(n);
   for (int i = 0; i < n; i++) {
@@ -24,17 +24,15 @@ int main() {
   }
   for (int i = 0; i < n; i++) {
     cin >> v[i].totalprice;
-    v[i].unitprice = v[i].totalprice / v[i].num;
   }
   sort(v.begin(), v.end(), cmp);
-  float total = 0;
-  for (int i = 0; i < n && d != 0; i++) {
+  for (int i = 0; i < n; i++) {
     if (d >= v[i].num) {
       total += v[i].totalprice;
       d -= v[i].num;
     } else {
-      total += ((float)d / v[i].num) * v[i].totalprice;
-      d = 0;
+      total += d * v[i].totalprice / v[i].num;
+      break;
     }
   }
   printf("%.2f", total);

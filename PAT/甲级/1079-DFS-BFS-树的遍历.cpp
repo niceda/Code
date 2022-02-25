@@ -9,11 +9,11 @@
 using namespace std;
 
 int n; 
-float p, r, total;
+double p, r, total = 0.0;
 vector<int> v[100000];
 int amount[100000];
 
-void DFS(int index, float unitprice) {
+void DFS(int index, double unitprice) {
   if (v[index].empty()) {
     total += amount[index] * unitprice;
     return;
@@ -32,6 +32,7 @@ int main() {
     cin >> k;
     if (k == 0) {
       cin >> amount[i];
+      continue;
     }
     for (int j = 0; j < k; j++) {
       int t;
