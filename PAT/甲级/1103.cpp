@@ -17,7 +17,7 @@ void gen(int n, int cnt) {
   } else if (n == 0 && temp.size() == k) {
     vector<int> t = temp;
     sort(t.begin(), t.end(), greater<int>());
-    result.push_back(temp);
+    result.push_back(t);
     return;
   }
   for (int i = cnt; pow(i, p) <= n; i++) {
@@ -41,15 +41,13 @@ bool cmp(vector<int> &a, vector<int> &b) {
         return a[i] > b[i];
     }
   }
+  return true;
 }
 
 int main() {
   scanf("%d %d %d", &n, &k, &p);
   gen(n, 1);
-  for (int i = 0; i < result.size(); i++) {
-    sort(result[i].begin(), result[i].end(), greater<int>());
-  }
-  sort(result.begin(), result.end());
+  sort(result.begin(), result.end(), cmp);
   if (!result.empty()) {
     printf("%d =", n);
     for (int i = 0; i < k; i++) {

@@ -34,7 +34,7 @@ void dfs(int id) {
   temppath.pop_back();
 }
 
-bool cmp(vector<int> &a, vector<int> &b) {
+bool cmp1(vector<int> &a, vector<int> &b) {
   for (int i = 0; i < min(a.size(), b.size()); i++) {
     if (weight[a[i]] != weight[b[i]])
       return weight[a[i]] > weight[b[i]];
@@ -64,7 +64,7 @@ int main() {
     }
   }
   dfs(0);
-  sort(path.begin(), path.end(), cmp);
+  sort(path.begin(), path.end(), cmp1);
   for (int i = 0; i < path.size(); i++) {
     for (int j = 0; j < path[i].size(); j++) {
       if (j != 0)

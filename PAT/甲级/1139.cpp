@@ -21,19 +21,19 @@ int main() {
   int n, m, k;
   cin >> n >> m;
   for (int i = 0; i < m; i++) {
-    int a, b;
+    string a, b;
     cin >> a >> b;
-    v[abs(a)].push_back(abs(b));
-    v[abs(b)].push_back(abs(a));
-    if (a < 0) {
-      gendermap[abs(a)] = -1;
+    v[abs(stoi(a))].push_back(abs(stoi(b)));
+    v[abs(stoi(b))].push_back(abs(stoi(a)));
+    if (a[0] == '-') {
+      gendermap[abs(stoi(a))] = -1;
     } else {
-      gendermap[abs(a)] = 1;
+      gendermap[abs(stoi(a))] = 1;
     }
-    if (b < 0) {
-      gendermap[abs(b)] = -1;
+    if (b[0] == '-') {
+      gendermap[abs(stoi(b))] = -1;
     } else {
-      gendermap[abs(b)] = 1;
+      gendermap[abs(stoi(b))] = 1;
     }
   }
   cin >> k;
@@ -44,13 +44,13 @@ int main() {
     b = abs(b);
     vector<node> result;
     for (int j = 0; j < v[a].size(); j++) {
-      if (gendermap[a] == gendermap[v[a][j]]) {
+      if (v[a][j] != b && gendermap[a] == gendermap[v[a][j]]) {
         fill(flag, flag + 10000, 0);
         for (int i = 0; i < v[v[a][j]].size(); i++) {
           flag[v[v[a][j]][i]] = 1;
         }
         for (int l = 0; l < v[b].size(); l++) {
-          if (gendermap[b] == gendermap[v[b][l]] && flag[v[b][l]] == 1) {
+          if (v[b][l] != a && gendermap[b] == gendermap[v[b][l]] && flag[v[b][l]] == 1) {
             result.push_back({v[a][j], v[b][l]});
           }
         }
@@ -59,7 +59,7 @@ int main() {
     sort(result.begin(), result.end(), cmp);
     cout << result.size() << endl;
     for (int i = 0; i < result.size(); i++) {
-      cout << result[i].l << " " << result[i].r << endl;
+      printf("%04d %04d\n", result[i].l, result[i].r);
     }
   }
   return 0;
