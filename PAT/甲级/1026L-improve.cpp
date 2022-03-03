@@ -2,7 +2,6 @@
 #include <cmath>
 #include <iostream>
 #include <map>
-#include <pthread.h>
 #include <queue>
 #include <set>
 #include <stack>
@@ -23,8 +22,7 @@ vector<tablenode> table;
 
 int findnextvip(int vipid) {
   vipid++;
-  while (vipid < player.size() && player[vipid].vip == false)
-    vipid++;
+  while (vipid < player.size() && player[vipid].vip == false) vipid++;
   return vipid;
 }
 
@@ -46,8 +44,7 @@ int main() {
     scanf("%d:%d:%d %d %d", &h, &m, &s, &temptime, &flag);
     tempperson.arrive = h * 3600 + m * 60 + s;
     tempperson.start = 21 * 3600;
-    if (tempperson.arrive >= 21 * 3600)
-      continue;
+    if (tempperson.arrive >= 21 * 3600) continue;
     tempperson.time = temptime <= 120 ? temptime * 60 : 720;
     tempperson.vip = ((flag == 1) ? true : false);
     player.push_back(tempperson);
@@ -69,21 +66,19 @@ int main() {
         index = j;
       }
     }
-    if (table[index].end > 21 * 3600)
-      break;
+    if (table[index].end >= 21 * 3600) break;
     if (player[i].vip == true && i < vipid) {
       i++;
       continue;
     }
-    if (minendtime > player[i].arrive) {
+    if (minendtime >= player[i].arrive) {
       if (table[index].vip == true) {
         if (player[i].vip == true) {
           alloctable(i, index);
           if (vipid == i) vipid = findnextvip(vipid);
           i++;
         } else {
-          if (vipid < player.size() &&
-              player[vipid].arrive < minendtime) {
+          if (vipid < player.size() && player[vipid].arrive <= minendtime) {
             alloctable(vipid, index);
             vipid = findnextvip(vipid);
           } else {
@@ -154,8 +149,7 @@ int main() {
     printf("%.f\n", round((player[i].start - player[i].arrive) / 60.0));
   }
   for (int i = 1; i <= k; i++) {
-    if (i != 1)
-      printf(" ");
+    if (i != 1) printf(" ");
     printf("%d", table[i].num);
   }
   return 0;
