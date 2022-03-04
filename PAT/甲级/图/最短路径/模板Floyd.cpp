@@ -1,8 +1,10 @@
-#include <iostream>
+#include <cstdio>
+#include <algorithm>
 using namespace std;
 const int INF = 1000000000;
+const int MAXV = 200;
 int n, m;
-int dis[510][510];
+int dis[MAXV][MAXV];
 
 void Floyd() {
   for (int k = 0; k < n; k++) {
@@ -14,24 +16,23 @@ void Floyd() {
     }
   }
 }
-  
+
 int main() {
   int u, v, w;
-  fill(dis[0], dis[0] + 510 * 510, INF);
-  cin >> n >> m;
+  fill(dis[0], dis[0] + MAXV * MAXV, INF);
+  scanf("%d%d", &n, &m);
   for (int i = 0; i < n; i++) {
     dis[i][i] = 0;
   }
   for (int i = 0; i < m; i++) {
-    cin >> u >> v >> w;
+    scanf("%d%d%d", &u, &v, &w);
     dis[u][v] = w;
   }
   Floyd();
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < n; j++) {
-      cin >> dis[i][j];
+      printf("%d", dis[i][j]);
     }
-    cout << endl;
+    printf("\n");
   }
-  return 0;
 }
