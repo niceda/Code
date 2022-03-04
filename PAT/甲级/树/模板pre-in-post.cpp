@@ -16,7 +16,7 @@ node* create1(int inLeft, int inRight, int preLeft, int preRight) {
   node *root = new node();
   root->data = pre[preLeft];
   int i = inLeft;
-  while (i < inRight && pre[preLeft] != in[i]) i++;
+  while (i <= inRight && pre[preLeft] != in[i]) i++;
   root->lchild = create1(inLeft, i - 1, preLeft + 1, preLeft + (i - inLeft));
   root->rchild = create1(i + 1, inRight, preLeft + (i - inLeft) + 1, preRight);
   return root;
@@ -29,7 +29,7 @@ node* create2(int inLeft, int inRight, int postLeft, int postRight) {
   node *root = new node();
   root->data = post[postRight];
   int i = inLeft;
-  while (i < inRight && post[postRight] != in[i]) i++;
+  while (i <= inRight && post[postRight] != in[i]) i++;
   root->lchild = create2(inLeft, i - 1, postLeft, postLeft + (i - inLeft) - 1);
   root->rchild = create2(i + 1, inRight, postLeft + (i - inLeft), postRight);
   return root;

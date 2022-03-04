@@ -44,14 +44,14 @@ int CriticalPath() {
     if (maxLength < ve[i])
       maxLength = ve[i];
   }
-  fill(vl[0], vl[0] + n, maxLength);
+  fill(vl.begin(), vl.end() + n, maxLength);
   while (!toporder.empty()) {
     int u = toporder.top();
     toporder.pop();
     for (int i = 0; i < G[u].size(); i++) {
       int v = G[u][i].v;
-      if (vl[u] - G[u][i].w < vl[v])
-        vl[v] = vl[u] - G[u][i].w;
+      if (vl[v] - G[u][i].w < vl[u])
+        vl[u] = vl[v] - G[u][i].w;
     }
   }
   for (int u = 0; u < n; u++) {

@@ -9,13 +9,34 @@
 ##### 数据结构
 - array
 - vector
+  - push_back(t);
+  - pop_back();
+  - v.resize(n);
+  - size();
+  - empty();
 - 链表
 - stack
+  - top();
+  - pop();
+  - push(t);
+  - size();
+  - empty();
 - queue
+  - front();
+  - pop();
+  - push(t);
+  - size();
+  - empty();
 - map
+  - find();
+  - end();
 - set
+  - insert(t);
+  - find();
+  - end();
 - 树
   - BST
+  - AVL
 - 图
   - 最短路径
   - 关键路径
@@ -23,7 +44,15 @@
   - 回溯剪枝
 - heap
   - maxHeap
+    - make_heap(v.begin(), v.end());
+    - is_heap(v.begin(), v.end());
+    - pop_heap(v.begin(), v.end());
+    - push_heap(v.begin(), v.end());
   - minHeap
+    - make_heap(v.begin(), v.end(), greater<int>());
+    - is_heap(v.begin(), v.end(), greater<int>());
+    - pop_heap(v.begin(), v.end());
+    - push_heap(v.begin(), v.end());
 - 并查集
 
 #### 算法/设计
