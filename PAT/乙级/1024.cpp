@@ -10,7 +10,7 @@ int main() {
   int e;
   cin >> e;
   if (e >= 0) {
-    if(s.length() - 1 >= e)
+    if(s.length() - 1 > e)
       s.insert(1 + e, 1, '.');
     else {
       string temp(e - s.length() + 1, '0');
