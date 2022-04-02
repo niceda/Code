@@ -260,12 +260,17 @@ print(result)
 vector1 <- c(5, 9, 3)
 vector2 <- c(10, 11, 12, 13, 14, 15)
 result <- array(c(vector1, vector2), dim = c(3, 3, 3))
+dim(result)
+dim(result)[1]
+dim(result)[2]
+names(result)
 print(result)
 column.names <- c("COL1", "COL2", "COL3")
 row.names <- c("ROW1", "ROW2", "ROW3")
 matrix.names <- c("Matrix1", "Matrix2")
 result <- array(c(vector1, vector2), dim = c(3, 3, 2), dimnames = list(row.names, column.names, matrix.names))
 print(result)
+names(result)
 print(result[3, , 2])
 print(result[1, 3, 2])
 print(result[, , 2])
@@ -377,8 +382,10 @@ write.csv(retval, "runoob.csv", row.names = FALSE)
 install.packages("xlsx", repos = "https://mirrors.ustc.edu.cn/CRAN/")
 # any(grep1("xlsx",installed.packages()))
 library("xlsx")
-print(read.xlsx("sites.xlsx", sheetIndex = 1))
-
+# print(read.xlsx("sites.xlsx", sheetIndex = 1))
+data <- read.xlsx("C:\\Users\\Fida\\Desktop\\Code\\R\\sites.xlsx", sheetIndex = 1)
+print(data)
+names(data)
 # XML file
 
 # JSON file
